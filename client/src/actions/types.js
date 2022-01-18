@@ -1,0 +1,9 @@
+export const GET_GAMES = 'GET_GAMES';
+export const GET_DETAIL = 'GET_DETAIL';
+export const GET_GENRES = 'GET_GENRES';
+export const POST_CREATE = 'POST_CREATE';
+export const ORDER_BY_GENRES = 'ORDER_BY_GENRES';
+export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const ORDER_BY_RATING = 'ORDER_BY_RATING';
+export const GAME_IN_DB = 'GAME_IN_DB';
+export const GET_GAME_NAME = 'GET_GAME_NAME';

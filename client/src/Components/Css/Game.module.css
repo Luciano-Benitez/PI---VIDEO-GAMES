@@ -1,0 +1,24 @@
+.cts {
+    background-color:rgb(211, 211, 211);
+    border: solid;
+    width: max-content;
+    border-radius:4px;
+    padding: 25px;
+    border-color:rgba(128, 128, 128, 0.575);
+    margin: 10px;
+    margin-left: 15rem;
+    display:inline-block;
+    
+}
+
+.img{
+    border-radius: 5px;
+}
+
+.h3{
+    color: rgb(253, 253, 253);
+}
+
+.h4{
+    color: rgb(255, 255, 255);
+}

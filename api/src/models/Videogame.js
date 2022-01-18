@@ -1,5 +1,4 @@
-const { DataTypes } = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
+const { DataTypes, UUIDV4 } = require('sequelize');
 
 module.exports = (sequelize) => {
   // defino el modelo
@@ -7,7 +6,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: uuidv4(),
+      defaultValue: UUIDV4,
       unique: true,
       allowNull: false,
     },
@@ -19,11 +18,11 @@ module.exports = (sequelize) => {
 
     descripcion: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: false
     },
 
     fecha: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
     },
 
@@ -35,6 +34,12 @@ module.exports = (sequelize) => {
     plataformas: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true, 
+      defaultValue:true
     }
   });
 };

@@ -1,0 +1,42 @@
+.app{
+    background: url('../img/Home.jpg');
+    background-repeat: no-repeat;
+    display: flex;
+    height: 150vh;
+}
+
+.button{
+    position: absolute;
+    width: 7%;height:4%;
+    margin-top: 1.5rem;
+    left: 45%;
+}
+
+.app img{
+    position: absolute;
+    right: 100px;
+    margin-top: 1.5rem;
+    border-radius:4px;
+}
+
+.app h1{
+    margin-left: 3rem;
+    margin-top: 1rem;
+    color: rgba(189, 189, 189, 0.877);
+}
+
+.app h3 {
+    display: flex;
+    margin-left: 3rem;
+    color: black
+}
+
+.app h4{
+    font-size: 900;
+    font-weight: 600;
+    text-indent: 75px;
+    height: 15px;
+    display: inline-block;  
+    margin-top: 0px;
+ 
+}

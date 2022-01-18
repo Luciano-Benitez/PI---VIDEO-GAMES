@@ -1,0 +1,60 @@
+.back{
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    display: flow-root;
+    background-size: cover;
+}
+
+.all{
+    display: flex;
+    position: relative;
+    place-content: center;
+    margin-top: 3rem;
+}
+
+.search{
+    margin-top: 1.5rem;
+    
+}
+
+.recargar{
+    margin-top: 1.5rem;
+    margin-right: 15rem;
+    font-size: 10px;
+}
+
+.create{
+    font-size: 18px;
+    margin-left: 15rem;
+    text-decoration: none;
+}
+
+.paginado{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.filter{
+    text-align: center;
+}
+.az{
+    float: left;
+    margin-left: 55px;
+}
+
+.fgeneros{
+    float: left;
+    margin-left: 75px;
+}
+
+.rating{
+    float: left;
+    margin-left: 6rem;
+}
+
+.gamesCreated{
+    float: right;
+    margin-right: 10rem;
+}
+

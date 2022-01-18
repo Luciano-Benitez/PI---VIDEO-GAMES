@@ -1,0 +1,61 @@
+.all{
+    background: url('../img/Home.jpg');
+    font-size: 20px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    display: flow-root;
+    height: 100vw;
+}
+
+.h2{
+    color: antiquewhite;
+   position: relative;
+   text-align: center;
+}
+
+.button{
+    margin-left: 25px;
+    overflow:auto;
+    position:relative;
+    width:60px;height:30px; /* tamaño del boton */
+}
+
+.label{
+    position: relative;
+    float: none;
+    display:flex;
+    left: 5%;
+    margin: 3px;
+}
+
+.create{
+    margin-top: 15%;
+    margin-left: 35%;
+    width: 25rem;height:40px;
+}
+
+.label p{
+    margin-right:  10px;
+    display: block;
+}
+
+.genero{ 
+    position: absolute;
+    display: flex;
+    margin-left: 58px;
+}
+
+.genero2{
+    position: absolute;
+    display: flex;
+    margin-left: 58px;
+    margin-top: 60px;
+}
+
+.descrip{
+    position: relative;
+    float: none;
+    display:flex;
+    left: 5%;
+    margin: 3px;
+}
