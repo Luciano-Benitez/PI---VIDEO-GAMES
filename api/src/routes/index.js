@@ -118,7 +118,7 @@ router.post("/create", async (req, res) => {
       fecha,
       rating,
       plataformas,
-      createdInDb
+      createdInDb,
     });
     const genres = await Genero.findAll({
       where: {

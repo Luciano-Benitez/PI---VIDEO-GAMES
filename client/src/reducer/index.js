@@ -52,7 +52,7 @@ const reducer = (state = initialState, {type, payload}) => {
 
             case GAME_IN_DB:
             const gamesTotal = state.allGames;
-            const createdInDB = payload === 'DB' ? gamesTotal.filter(game => game.createdInDb === true) : null;
+            const createdInDB = payload === 'created'? gamesTotal.filter(game => game.createdInDb) : null;
                 return {
                 ...state,
                 games: createdInDB

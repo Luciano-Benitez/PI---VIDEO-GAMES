@@ -7,6 +7,7 @@ import style from '../Components/Css/Detail.module.css';
 
 export  function Detail(props){
     const {id} = props.match.params;
+    console.log('id: ',id)
     const dispatch = useDispatch();
     
     var allDetail = useSelector((state) => state.detail[0]);

@@ -5,6 +5,19 @@ const { YOU_API_KEY } = process.env;
 
 async function allGames(req, res) {
     try {
+      const resultDB = await Videogame.findAll({
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
+        },
+        include: {
+          model: Genero,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      });
+
       const gamesApi1 = await axios.get(`https://api.rawg.io/api/games?key=${YOU_API_KEY}&page_size=40&page=1`);
       const gamesApi2 = await axios.get(`https://api.rawg.io/api/games?key=${YOU_API_KEY}&page_size=40&page=2`);
       const gamesApi3 = await axios.get(`https://api.rawg.io/api/games?key=${YOU_API_KEY}&page_size=20&page=3`);
@@ -23,19 +36,8 @@ async function allGames(req, res) {
           plataformas: game.parent_platforms.map(e => e.platform.name)
         };
       });
-      const resultDB = await Videogame.findAll({
-        attributes: {
-          exclude: ["createdAt", "updatedAt"],
-        },
-        include: {
-          model: Genero,
-          attributes: ["name"],
-          through: {
-            attributes: [],
-          },
-        },
-      });
-      res.status(200).json(resultApi.concat(resultDB));
+      
+      res.status(200).json(resultDB.concat(resultApi));
     } catch (error) {
       res.send("Error en el primer Catch.");
     }

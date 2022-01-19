@@ -4,17 +4,36 @@ import { useDispatch } from "react-redux";
 import {postNewGame} from '../actions/index';
 import style from '../Components/Css/Create.module.css';
 
+function validate (state){
+    let errors = {};
+    if(!state.name){
+      errors.name = '¡Se requiere asignar un nombre!';
+    } else if(!state.fecha){
+      errors.fecha = '¡Se requiere asignar una fecha!';
+    } else if(!state.descripcion){
+        errors.descripcion = '¡Se requiere asignarle una descripcion!';
+    } else if(state.rating !== null ){
+        errors.rating = '¡Se requiere asignarle un rating!';
+    } /* else if(!state.plataformas){
+        errors.plataformas = '¡Se requiere asignarle plataformas!';
+    } else if(!state.generos){
+        errors.generos = '¡Se requiere asignarle generos!';
+    } */
+    return errors;
+};
+
 export function GameCreate(){
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const [errors, setErrors] = React.useState({});
     const [state, setState] = React.useState({
         name: '',
         fecha: '',
+        descripcion: '',
         rating: '',
         plataformas: '', 
         generos: [],
-        descripcion: ''
     });
 
     const handleChange = (e) => {
@@ -22,6 +41,10 @@ export function GameCreate(){
             ...state,
             [e.target.name]: e.target.value
         });
+        setErrors(validate({
+            ...state,
+            [e.target.name]: e.target.value
+          }));
     };
 
     function checkRating(e){
@@ -63,6 +86,8 @@ export function GameCreate(){
             history.push('/home');
         }
     };
+    console.log('state: ', state);
+    console.log('errors: ', errors);
 
     return(
         <div className={style.all} >
@@ -72,14 +97,23 @@ export function GameCreate(){
                 <label className={style.label} >Nombre:
                 <input type="text" name="name" value={state.name} onChange={handleChange} />
                 </label>
-
+                {errors.name&&(
+                <p>{errors.name}</p>
+                )}
+                
                 <label className={style.label} >Fecha:
                 <input  type="text" name="fecha" value={state.fecha} onChange={handleChange} />
                 </label>
+                {errors.fecha&&(
+                <p>{errors.fecha}</p>
+                )}
 
                 <label className={style.descrip} >Descripcion:
                 <input type="textarea" name="descripcion" value={state.descripcion} onChange={handleChange} />
                 </label>
+                {errors.descripcion&&(
+                <p>{errors.descripcion}</p>
+                )}
 
                 <div className={style.label} >
                 <p>Rating: </p>
@@ -89,6 +123,10 @@ export function GameCreate(){
                 <p>7<input type="checkbox"  value={'7'} onChange={checkRating} /></p>
                 <p>10<input type="checkbox"  value={'10'} onChange={checkRating} /></p>
                 </div>
+                {errors.rating&&(
+                <p>{errors.rating}</p>
+                )}
+                
                 
                 <div className={style.label} >
                 <p>Plataformas: </p>
@@ -101,6 +139,9 @@ export function GameCreate(){
                 <p>Android<input type="checkbox"  value={'Android'} onChange={checkPlataform} /></p>
                 <p>iOS<input type="checkbox"  value={'iOS'} onChange={checkPlataform} /></p>
                 </div>
+                {errors.plataformas&&(
+                <p>{errors.plataformas}</p>
+                )}
 
                 <div className={style.genero} >
                 <p  >Generos: </p>
@@ -126,6 +167,9 @@ export function GameCreate(){
                     <p>Card<input type="checkbox"  value={'Card'} onChange={checkGenres} /></p>
                     </div>
                 </div>
+                {errors.generos&&(
+                <p>{errors.generos}</p>
+                )}
 
 
                 <button className={style.create} type="submit">¡Crear Juego!</button>
