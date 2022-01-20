@@ -26,13 +26,13 @@ export  function Detail(props){
                 <div>
                     <h1>{allDetail.name}</h1>
                     <img float='right' src={allDetail.img} width='450px' height='225px' alt='img'/>
-                    <h3>ID: <h4>{allDetail.id}</h4></h3>
-                    <h3>Fecha: <h4>{allDetail.fecha}</h4></h3>
-                    <h3>Rating: <h4>{allDetail.rating}</h4></h3>
-                    <h3>Plataformas: <h4>{allDetail.plataformas}</h4></h3>
-                    <h3>Generos: <h4>{allDetail.generos}</h4></h3>
-                    <h3>Descripción: <h4 dangerouslySetInnerHTML={{ __html: allDetail.descripcion, }}/></h3>
-                </div> :  <p>loading...</p>
+                    <h3>ID: <p>{allDetail.id}</p></h3>
+                    <h3>Fecha: <p>{allDetail.fecha}</p></h3>
+                    <h3>Rating: <p>{allDetail.rating}</p></h3>
+                    <h3>Plataformas: <p>{allDetail.plataformas}</p></h3>
+                    <h3>Generos: <p>{allDetail.generos[0].name}</p></h3>
+                    <h3>Descripción: <p dangerouslySetInnerHTML={{ __html: allDetail.descripcion, }}/></h3>
+                </div> :  <label className={style.label} >Loading...</label>
             }
                 
         </div>

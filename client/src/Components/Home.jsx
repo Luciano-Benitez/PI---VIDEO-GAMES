@@ -110,18 +110,15 @@ export function Home(){
             <option  value='Mayor_Menor'>Mayor a Menor</option>
             </select></label></div>
 
-            <div className={style.gamesCreated} ><label>Filtrar juegos: 
-            <select  onChange={e => createdInDB(e)} >
-                <option value='' >-select-</option>
-                <option value='created' >Juegos Creados</option>
-            </select></label></div>
+            <div className={style.gamesCreated} ><label>Filtrar por juegos creados: 
+            <input type='checkbox' value='created' onChange={e => createdInDB(e)} /></label></div>
             </div>
             
             {
-                currentGames?.map(e => {
+                currentGames?.map((e) => {
                     return (
                         <Link to={'/game/' + e.id} key={e.id} >
-                        <Game name={e.name} img={e.img} generos={e.generos} /* slug={e.slug} */  />
+                        <Game name={e.name} img={e.img} generos={e.generos} />
                         </Link>
                     )
                 })

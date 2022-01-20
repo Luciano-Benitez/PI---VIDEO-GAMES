@@ -7,7 +7,7 @@ async function allGames(req, res) {
     try {
       const resultDB = await Videogame.findAll({
         attributes: {
-          exclude: ["createdAt", "updatedAt"],
+          exclude: ["createdAt", "updatedAt", "descripcion", "fecha", "rating", "plataformas"],
         },
         include: {
           model: Genero,
@@ -36,8 +36,8 @@ async function allGames(req, res) {
           plataformas: game.parent_platforms.map(e => e.platform.name)
         };
       });
-      
-      res.status(200).json(resultDB.concat(resultApi));
+      const array = [...resultDB, ...resultApi];
+      res.status(200).json(array);
     } catch (error) {
       res.send("Error en el primer Catch.");
     }

@@ -11,23 +11,22 @@ router.use('/videogames', routerGames);
 router.get("/videogames??", async (req, res) => {
   try {
     const { name } = req.query;
-    console.log('name: ',name)
-    const nameApi = await axios.get(`https://api.rawg.io/api/games?key=${YOU_API_KEY}&search=${name}`);
+    const nameDB = await Videogame.findAll({
+        where: {
+            name: {
+                [Op.iLike]: `%${name}%`,
+            },
+        },
+    });
+    const nameApi = await axios.get(`https://api.rawg.io/api/games?key=${YOU_API_KEY}&search=${name}&page=1`);
     const resultApi = nameApi.data.results.map(e => {
         return {
             id: e.id,
-            slug: e.slug,
+            name: e.name,
             img: e.background_image,
             rating: e.rating,
             generos: e.genres.map(e => e.name)
           }
-      });
-      const nameDB = await Videogame.findAll({
-          where: {
-              name: {
-                  [Op.iLike]: `%${name}%`,
-              },
-          },
       });
     const result = nameDB.concat(resultApi);
     result.length ? 
@@ -56,7 +55,9 @@ router.get("/videogames/:id", async (req, res) => {
           },
         },
       });
-      res.status(200).send(idDB);
+      let array1 = [];
+      array1.push(idDB);
+      res.status(200).json(array1);
     } else {
       const idApi = await axios.get(` https://api.rawg.io/api/games/${id}?key=${YOU_API_KEY}`);
       const array = [];

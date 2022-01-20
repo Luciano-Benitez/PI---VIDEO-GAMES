@@ -4,16 +4,21 @@ import {getGamesName} from '../actions/index';
 
 export function SearchBar() {
 const dispatch = useDispatch();
-const [name, setName] = React.useState();
+const [name, setName] = React.useState('');
 
   const handleInputChange = (e) => (
       setName(e.target.value)
 );
    
   function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(getGamesName(name));  
-    setName('');
+    if(!name){
+      e.preventDefault();
+      alert('¡Debe escribir algun juego en el buscador para poder buscar!')
+    } else {
+      e.preventDefault();
+      dispatch(getGamesName(name));  
+      setName('');
+    }
 };
 
     return (

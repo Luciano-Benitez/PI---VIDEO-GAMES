@@ -12,13 +12,7 @@ function validate (state){
       errors.fecha = '¡Se requiere asignar una fecha!';
     } else if(!state.descripcion){
         errors.descripcion = '¡Se requiere asignarle una descripcion!';
-    } else if(state.rating !== null ){
-        errors.rating = '¡Se requiere asignarle un rating!';
-    } /* else if(!state.plataformas){
-        errors.plataformas = '¡Se requiere asignarle plataformas!';
-    } else if(!state.generos){
-        errors.generos = '¡Se requiere asignarle generos!';
-    } */
+    } 
     return errors;
 };
 
@@ -86,8 +80,6 @@ export function GameCreate(){
             history.push('/home');
         }
     };
-    console.log('state: ', state);
-    console.log('errors: ', errors);
 
     return(
         <div className={style.all} >

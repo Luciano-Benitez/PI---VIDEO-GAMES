@@ -42,9 +42,10 @@ const reducer = (state = initialState, {type, payload}) => {
             };
 
             case ORDER_BY_NAME:
+                const gamesAll = state.games;
             const orderbyName = payload === 'asc' ?
-            state.games.sort((a,b) => a.name.localeCompare(b.name)) :
-            state.games.sort((a,b) => b.name.localeCompare(a.name));
+            gamesAll.sort((a,b) => a.name.localeCompare(b.name)) :
+            gamesAll.sort((a,b) => b.name.localeCompare(a.name));
                 return{
                     ...state,
                     games:  orderbyName
@@ -52,7 +53,7 @@ const reducer = (state = initialState, {type, payload}) => {
 
             case GAME_IN_DB:
             const gamesTotal = state.allGames;
-            const createdInDB = payload === 'created'? gamesTotal.filter(game => game.createdInDb) : null;
+            const createdInDB = payload === 'created' && gamesTotal.filter(game => game.createdInDb);
                 return {
                 ...state,
                 games: createdInDB
@@ -72,7 +73,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 return {
                     ...state,
                     games: payload
-                }
+                };   
 
         default:
             return state;
