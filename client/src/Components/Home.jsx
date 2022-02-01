@@ -13,12 +13,12 @@ export function Home(){
     const dispatch = useDispatch();
 
     const[order, setOrder] = React.useState('');
-    const allGames = useSelector(state => state.games);
+    const state = useSelector(state => state);
     const [currentPage, setCurrentPage] = React.useState(1)
     const [gamePerPage, setGamePerPage] = React.useState(15)
     const indexOfLastCountry = currentPage * gamePerPage
     const indexOfFirstCountry = indexOfLastCountry - gamePerPage
-    const currentGames = allGames?.slice(indexOfFirstCountry, indexOfLastCountry);
+    const currentGames = state.games?.slice(indexOfFirstCountry, indexOfLastCountry);
 
     const paginado = (pageNumbers) => {
         setCurrentPage(pageNumbers)
@@ -72,7 +72,7 @@ export function Home(){
             <div className={style.paginado} >
                 <Paginado
                     gamePerPage={gamePerPage}
-                    allGames={allGames.length}
+                    allGames={state.games.length}
                     paginado={paginado}
                 />
             </div>
@@ -114,15 +114,17 @@ export function Home(){
             <input type='checkbox' value='created' onChange={e => createdInDB(e)} /></label></div>
             </div>
             
-            {
-                currentGames?.map((e) => {
-                    return (
-                        <Link to={'/game/' + e.id} key={e.id} >
-                        <Game name={e.name} img={e.img} generos={e.generos} />
-                        </Link>
-                    )
-                })
-            }
+            {currentGames?.map((e) => {
+                let genre = [];
+                for (let i = 0; i < e.generos.length; i++) {
+                genre.push(e.generos[i].name);
+                }
+                return (
+                <Link to={"/game/" + e.id} key={e.id}>
+                <Game name={e.name} generos={genre?.join(" - ")} img={e.img} />
+                </Link>
+                );
+      })}
         </div>
     );
 };

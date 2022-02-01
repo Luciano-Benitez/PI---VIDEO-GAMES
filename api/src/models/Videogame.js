@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
     img: {
       type: DataTypes.STRING,
       allowNull: false, 
-      defaultValue: 'https://image.freepik.com/vector-gratis/controles-videojuegos-estilo-neon-pared-ladrillo_24908-58916.jpg'
+      defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcAzVhivQaODwCNC-s4WGPbGoF2Yi2mx2aVw&usqp=CAU'
     },
 
   });

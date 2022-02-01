@@ -7,11 +7,11 @@ async function allGames(req, res) {
     try {
       const resultDB = await Videogame.findAll({
         attributes: {
-          exclude: ["createdAt", "updatedAt", "descripcion", "fecha", "rating", "plataformas"],
+          exclude: ["createdAt", "updatedAt", "descripcion", "fecha", "plataformas"],
         },
         include: {
           model: Genero,
-          attributes: ["name"],
+          attributes: ['name'],
           through: {
             attributes: [],
           },
@@ -32,7 +32,7 @@ async function allGames(req, res) {
           fecha: game.released,
           img: game.background_image,
           rating: game.rating,
-          generos: game.genres.map((e) => e.name),
+          generos:  game.genres.map((e) => ({ name: e.name })),
           plataformas: game.parent_platforms.map(e => e.platform.name)
         };
       });
